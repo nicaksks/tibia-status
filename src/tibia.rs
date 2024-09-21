@@ -4,8 +4,11 @@ use std::{
     time::Duration,
 };
 
+use serde::Deserialize;
+
 use crate::model::server::{self, Tsqp};
 
+#[derive(Debug, Deserialize)]
 pub struct ProtocolGame {
     pub ip: String,
     pub port: String,

@@ -4,21 +4,14 @@ use actix_web::{
     web::{self},
     App, HttpResponse, HttpServer, Responder,
 };
-use serde::Deserialize;
 use tibia::ProtocolGame;
 
 mod model;
 mod tibia;
 
-#[derive(Debug, Deserialize)]
-struct Server {
-    ip: String,
-    port: String,
-}
-
 #[get("/status")]
-async fn status(query: web::Query<Server>) -> impl Responder {
-    let Server { ip, port } = query.0;
+async fn status(query: web::Query<ProtocolGame>) -> impl Responder {
+    let ProtocolGame { ip, port } = query.0;
     let tibia = ProtocolGame { ip, port };
 
     match tibia.server_status() {

@@ -1,0 +1,14 @@
+[[bin]]
+name = "cli"
+path = "cli/cli.rs"
+
+[package]
+name = "tibia"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = "4.9.0"
+serde = { version = "1.0.210", features = ["derive"] }
+serde_json = "1.0.128"
+xmltojson = "0.1.3"

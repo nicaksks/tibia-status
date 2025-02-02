@@ -20,7 +20,6 @@ impl ProtocolGame {
     #[allow(unused_must_use)]
     pub fn server_status(&self) -> Result<server::Server, (i16, &str)> {
         let addr = &format!("{}:{}", self.ip.clone().unwrap(), self.port.clone().unwrap_or("7171".to_string()));
-        println!("{}", addr);
         let conn = TcpStream::connect(addr);
 
         match conn {

@@ -11,7 +11,7 @@ mod tibia;
 
 #[get("/status")]
 async fn status(query: web::Query<ProtocolGame>) -> impl Responder {
-    let ProtocolGame { ip, mut port } = query.0;
+    let ProtocolGame { ip, port } = query.0;
 
     if ip.is_none() {
         return HttpResponse::UnprocessableEntity()
@@ -22,7 +22,6 @@ async fn status(query: web::Query<ProtocolGame>) -> impl Responder {
             });
     }
 
-    if let None = port { port = Some("7171".to_string()) }
     let tibia = ProtocolGame { ip, port };
 
     match tibia.server_status() {
